@@ -10,10 +10,10 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  opacity: 0; /* Start images as invisible */
+  transition: opacity 1.5s ease-in-out; /* Smooth transition for fade-in effect */
 }
 
 .image-container .visible {
-  opacity: 1;
+  opacity: 1; /* Fully visible when this class is applied */
 }

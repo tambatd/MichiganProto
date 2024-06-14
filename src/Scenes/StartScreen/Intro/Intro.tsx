@@ -1,39 +1,26 @@
-// import React, { useEffect, useState } from "react";
-// import ProjectMichiganImage from "./Assets/ProjectMichigan.gif";
-// import StudioBiwakoImage from "./Assets/StudioBiwako.gif";
-
-// const Intro = () => {
-//   useEffect(() => {
-//     console.log(ProjectMichiganImage);
-//   }, []);
-
-//   const images = [ProjectMichiganImage, StudioBiwakoImage];
-//   const [imageIndex, setImageIndex] = useState(0);
-//   return <img src={images[imageIndex]} onClick={() => setImageIndex(1)} />;
-// };
-
 import React, { useState, useEffect } from "react";
-import "./ImageFader.css"; // Import the CSS for styling
+import "./ImageFader.css";
 import ProjectMichiganImage from "./Assets/ProjectMichigan.gif";
 import StudioBiwakoImage from "./Assets/StudioBiwako.gif";
+import BlankImage from "./Assets/blank.png";
 
-const images = [ProjectMichiganImage, StudioBiwakoImage];
+const images = [BlankImage, ProjectMichiganImage, StudioBiwakoImage];
 
 function Intro() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (currentIndex < images.length - 1) {
+      if (currentIndex < images.length) {
         setCurrentIndex((currentIndex) => currentIndex + 1);
       } else {
+        console.log("End Intro and move to Menu");
         clearInterval(intervalId); // Stop the interval when the last image is reached
       }
-    }, 3000); // Change image every 2 seconds
+    }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [currentIndex]);
 
   return (
     <div className="image-container">
