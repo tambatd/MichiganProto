@@ -12,5 +12,9 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "images.d.ts" // Make sure this is included
+  ]
 }
