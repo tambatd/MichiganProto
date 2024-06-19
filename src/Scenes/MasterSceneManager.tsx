@@ -13,10 +13,12 @@ const getScene = (sceneName: string) => {
   }
 };
 
+type SceneType = React.FC;
+
 const MasterSceneManager = () => {
   const { scene } = store();
 
-  const SceneComponent = getScene(scene);
+  const SceneComponent: SceneType = getScene(scene);
 
   return (
     <div>
