@@ -1,1 +1,1 @@
-export type SceneName = ["Intro", "MainMenu"];
+export type SceneNames = "intro" | "mainMenu" | "introA";

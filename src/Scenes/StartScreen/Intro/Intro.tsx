@@ -31,7 +31,10 @@ function Intro() {
 
   if (!introFinished) {
     return (
-      <div className="image-container" onClick={() => setScene("MainMenu")}>
+      <div
+        className="image-container"
+        onClick={() => setCurrentIndex(currentIndex + 1)}
+      >
         {images.map((img, index) => (
           <div
             key={index}

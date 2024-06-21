@@ -1,11 +1,11 @@
 import { create } from "zustand";
-
+import { SceneNames } from "./types/gameplay/types";
 interface StoreState {
-  scene: string;
-  setScene: (sceneName: string) => void;
+  scene: SceneNames;
+  setScene: (sceneName: SceneNames) => void;
 }
 
 export const store = create<StoreState>((set: any) => ({
   scene: "intro",
-  setScene: (sceneName: string) => set({ scene: sceneName }),
+  setScene: (sceneName: SceneNames) => set({ scene: sceneName }),
 }));
