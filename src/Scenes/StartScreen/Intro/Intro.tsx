@@ -5,6 +5,7 @@ import StudioBiwakoImage from "./Assets/StudioBiwako.gif";
 import BlankImage from "./Assets/blank.png";
 import { store } from "../../../Data/store";
 import MainMenu from "../MainMenu";
+import UISceneOverlay from "../../../components/UISceneOverlay";
 const images = [BlankImage, ProjectMichiganImage, StudioBiwakoImage];
 
 function Intro() {

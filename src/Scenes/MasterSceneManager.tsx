@@ -4,7 +4,9 @@ import { store } from "../Data/store";
 // All Game Scenes:
 import Intro from "./StartScreen/Intro";
 import IntroA from "./IntroA";
-import { SceneNames } from "src/Data/types/gameplay/types";
+
+import { SceneNames } from "../Data/types/gameplay/types";
+import UISceneOverlay from "../components/UISceneOverlay";
 
 const getScene = (sceneName: SceneNames) => {
   console.log("Sending You To =>", sceneName);
@@ -26,9 +28,9 @@ const MasterSceneManager = () => {
   const SceneComponent: SceneType = getScene(scene);
 
   return (
-    <div>
+    <UISceneOverlay>
       <SceneComponent />
-    </div>
+    </UISceneOverlay>
   );
 };
 
