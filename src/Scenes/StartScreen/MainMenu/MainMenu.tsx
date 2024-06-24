@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { store } from "../../../Data/store";
-
+import styles from "./MainMenu.module.css";
 function MainMenu() {
   const { scene, setScene } = store();
 
   return (
-    <div>
+    <div className={styles.MainMenu}>
       <p>you are currently in: {scene} (hopefully the main menu)</p>
       <div onClick={() => setScene("introA")}>
         <p>Load Scene New Game Start</p>
