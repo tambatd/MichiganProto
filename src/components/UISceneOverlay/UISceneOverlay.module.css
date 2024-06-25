@@ -3,3 +3,17 @@
   width: 1920px;
   height: 1080px;
 }
+
+.GameplayContainerContent {
+  position: absolute;
+  z-index: 1;
+  width: 1920px;
+  height: 1080px;
+}
+
+.UIContainerOverlayContent {
+  position: absolute;
+  z-index: 2;
+  width: 1920px;
+  height: 1080px;
+}
