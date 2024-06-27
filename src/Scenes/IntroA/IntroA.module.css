@@ -1,0 +1,31 @@
+.fadeInText {
+  opacity: 0;
+  animation: fadeIn 3s forwards; /* Animation lasts 2 seconds and fills forwards */
+}
+
+.fadeInTextLong {
+  opacity: 0;
+  animation: fadeIn 10s forwards;
+  /* Animation lasts 2 seconds and fills forwards */
+}
+
+.fadeOutText {
+  opacity: 1;
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.selectable {
+  padding-top: 50px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
