@@ -1,8 +1,66 @@
 import React, { Suspense, useState } from "react";
 import { store } from "../../../src/Data/store";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, useGLTF } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Plane,
+  useGLTF,
+} from "@react-three/drei";
 import styles from "./IntroA.module.css";
+import { memo } from "react";
+import {
+  AccumulativeShadows,
+  RandomizedLight,
+  Environment as EnvironmentImpl,
+} from "@react-three/drei";
+import * as THREE from "three"; // Import Three.js
+
+export const Environment = memo(({ direction = [0, 0, 0] }) => (
+  <>
+    <directionalLight
+      position={direction}
+      intensity={0.5}
+      shadow-mapSize={1024}
+      castShadow
+    />
+    <directionalLight
+      position={[-5, 5, 5]}
+      intensity={0.1}
+      shadow-mapSize={128}
+      castShadow
+    />
+    <directionalLight
+      position={[-5, 5, -5]}
+      intensity={0.1}
+      shadow-mapSize={128}
+      castShadow
+    />
+    <directionalLight
+      position={[0, 5, 0]}
+      intensity={0.1}
+      shadow-mapSize={128}
+      castShadow
+    />
+    <AccumulativeShadows
+      frames={100}
+      alphaTest={0.85}
+      opacity={0.75}
+      scale={30}
+      position={[0, -1.5, 0]}
+    >
+      <RandomizedLight
+        amount={8}
+        radius={2.5}
+        ambient={0.5}
+        intensity={1}
+        position={direction}
+        bias={0.001}
+      />
+    </AccumulativeShadows>
+    <EnvironmentImpl preset="city" />
+  </>
+));
 
 const Model = () => {
   const { scene } = useGLTF("./models/intro_scene.glb"); // Ensure this path is correct
@@ -131,13 +189,35 @@ const IntroA = () => {
   } else
     return (
       <div style={{ width: "100vw", height: "100vh" }}>
-        <Canvas>
-          <PerspectiveCamera makeDefault position={[50, 10, 0]} fov={20} />
+        <Canvas shadows camera={{ position: [-15, 10, 15], fov: 25 }}>
+          <color attach="background" args={["skyblue"]} />
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[50, 10, 0]} intensity={1} />
             <Model />
-            <OrbitControls enablePan={true} />
+            <Plane
+              position={[-7, 0, 0]}
+              args={[1, 5]}
+              rotation={[0, -Math.PI / 2, 0]}
+            >
+              <meshBasicMaterial attach="material" side={THREE.DoubleSide} />
+            </Plane>
+            <Plane
+              position={[-7, 0, -3]}
+              args={[1, 5]}
+              rotation={[0, -Math.PI / 2, 0]}
+            >
+              <meshBasicMaterial attach="material" side={THREE.DoubleSide} />
+            </Plane>
+            <Plane
+              position={[-7, 0, 3]}
+              args={[1, 5]}
+              rotation={[0, -Math.PI / 2, 0]}
+            >
+              <meshBasicMaterial attach="material" side={THREE.DoubleSide} />
+            </Plane>
+            <Environment />
+            <OrbitControls enablePan={true} makeDefault />
           </Suspense>
         </Canvas>
       </div>
