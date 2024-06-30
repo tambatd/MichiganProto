@@ -20,7 +20,9 @@ function MainMenu() {
       <div onClick={() => setScene("UNKNOWN_ERROR")}>
         <p>Load Scene UNKNOWN_ERROR</p>
       </div>
-
+      <div onClick={() => setScene("PatrickArtDirectionTest")}>
+        <p>Load Patrick Art Direction test: PatrickArtDirectionTest</p>
+      </div>
       <div onClick={() => setScene("SOUND_ENGINE_TEST")}>
         <p>Load Scene Sound Engine: SOUND_ENGINE_TEST</p>
       </div>

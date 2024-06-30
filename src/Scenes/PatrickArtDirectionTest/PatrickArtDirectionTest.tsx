@@ -125,10 +125,10 @@ function LightingElements() {
 
 const PatrickArtDirectionTest = () => {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div
+      style={{ width: "100vw", height: "100vh", backgroundColor: "#0593ff" }}
+    >
       <Canvas shadows camera={{ position: [-15, 10, 15], fov: 15 }}>
-        <color attach="background" args={["skyblue"]} />
-
         <LightingElements />
 
         {/* Top Plane Mesh */}
@@ -139,8 +139,13 @@ const PatrickArtDirectionTest = () => {
           position={[0, 10, 0]}
         >
           <boxGeometry args={[25, 25]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            transparent={true}
+            opacity={0.9}
+            shadowSide={THREE.FrontSide}
+          />
         </mesh>
+        {/*Opacity makes plane transparent*/}
 
         {/* Middle Plane Mesh */}
         <mesh rotation-x={-Math.PI / 2} castShadow={true} receiveShadow={true}>
