@@ -1,1 +1,5 @@
-export type SceneNames = "intro" | "mainMenu" | "introA";
+export type SceneNames =
+  | "intro"
+  | "mainMenu"
+  | "introA"
+  | "PatrickArtDirectionTest";
