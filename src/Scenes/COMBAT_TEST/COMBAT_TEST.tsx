@@ -1,5 +1,5 @@
 import React, { Suspense, useMemo, useRef, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   OrbitControls,
   PerspectiveCamera,
@@ -15,6 +15,27 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three"; // Import Three.js
 import { useControls } from "leva";
+
+const Player = ({ position, size, color, boxSize }) => {
+  const ref = useRef();
+
+  useFrame((state, delta) => {
+    ref.current.rotation.y += delta;
+  });
+
+  return (
+    <>
+      <mesh position={position} ref={ref} rotation={[Math.PI, -Math.PI / 2, 0]}>
+        <coneGeometry args={size} />
+        <meshStandardMaterial color={color} />
+      </mesh>
+      <mesh position={position} ref={ref} rotation={[Math.PI, -Math.PI / 2, 0]}>
+        <boxGeometry args={boxSize} />
+        <meshStandardMaterial color={color} />
+      </mesh>
+    </>
+  );
+};
 
 function LightingElements() {
   const ambientCtl = useControls("Ambient Light", {
@@ -130,10 +151,17 @@ const COMBAT_TEST = () => {
       <Canvas shadows camera={{ position: [-15, 10, 15], fov: 15 }}>
         <LightingElements />
 
+        <Player
+          position={[0, 1, 0]}
+          size={[1, 2, 32]}
+          boxSize={[1, 1, 3]}
+          color={"orange"}
+        />
+
         <mesh
           rotation-x={-Math.PI / 2}
           receiveShadow={true}
-          position={[0, -20, 0]}
+          position={[0, 0, 0]}
         >
           <planeGeometry args={[100, 100]} />
           <meshStandardMaterial
