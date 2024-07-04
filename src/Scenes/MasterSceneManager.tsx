@@ -5,7 +5,9 @@ import { store } from "../Data/store";
 import Intro from "./StartScreen/Intro";
 import IntroA from "./IntroA";
 import PatrickArtDirectionTest from "./PatrickArtDirectionTest";
+import COMBAT_TEST from "./COMBAT_TEST/COMBAT_TEST";
 
+// Other imports
 import { SceneNames } from "../Data/types/gameplay/types";
 import UISceneOverlay from "../components/UISceneOverlay";
 
@@ -18,6 +20,8 @@ const getScene = (sceneName: SceneNames) => {
       return IntroA;
     case "PatrickArtDirectionTest":
       return PatrickArtDirectionTest;
+    case "COMBAT_TEST":
+      return COMBAT_TEST;
     default:
       return Intro;
   }

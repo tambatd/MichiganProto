@@ -17,6 +17,9 @@ function MainMenu() {
           Reload Game Initialization (should not send you anywhere or rerender)
         </p>
       </div>
+      <div onClick={() => setScene("COMBAT_TEST")}>
+        <p>Load Scene COMBAT_TEST</p>
+      </div>
       <div onClick={() => setScene("UNKNOWN_ERROR")}>
         <p>Load Scene UNKNOWN_ERROR</p>
       </div>

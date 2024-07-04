@@ -2,4 +2,5 @@ export type SceneNames =
   | "intro"
   | "mainMenu"
   | "introA"
-  | "PatrickArtDirectionTest";
+  | "PatrickArtDirectionTest"
+  | "COMBAT_TEST";

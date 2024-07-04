@@ -6,6 +6,6 @@ interface StoreState {
 }
 
 export const store = create<StoreState>((set: any) => ({
-  scene: "intro",
+  scene: "COMBAT_TEST",
   setScene: (sceneName: SceneNames) => set({ scene: sceneName }),
 }));

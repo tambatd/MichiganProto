@@ -11,9 +11,44 @@
   height: 1080px;
 }
 
-.UIContainerOverlayContent {
+.UILayer {
   position: absolute;
-  z-index: 1;
-  width: 1920px;
-  height: 1080px;
+  z-index: 3;
+}
+
+/*START OF BATTLE COMPONENT STYLING*/
+.BossHealthBar {
+  position: absolute;
+  top: 70vh;
+  left: calc(50vw - 15vw);
+  height: 30px;
+  width: 500px;
+  background-color: rgb(255, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SelectedPlayer {
+  position: absolute;
+  background-color: rgb(103, 133, 255);
+  width: 200px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SelectedEnemyPlayer {
+  position: absolute;
+  background-color: rgb(255, 103, 237);
+  width: 200px;
+  height: 300px;
+  top: 0;
+  left: calc(100vw - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
